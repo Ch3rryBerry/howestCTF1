@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Howest CTF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="files/0ebef37b1c629fee90760881d4533b2b/finish.png" type="image/x-icon">
+
+
+
+
+    <link rel="stylesheet" href="themes/core-beta/static/assets/main.e9ec7884.css">
+
+
+
+
+  <script  src="themes/core-beta/static/assets/color_mode_switcher.52334129.js"></script>
+
+  <script type="text/javascript">
+      window.init = {
+          'urlRoot': "",
+          'csrfNonce': "dae4fe606355dfec305bd2463b1d021e7f0637395b1732f14c179b7d5f0b25ca",
+          'userMode': "teams",
+          'userId': 0,
+          'userName': null,
+          'userEmail': null,
+          'teamId': null,
+          'teamName': null,
+          'start': null,
+          'end': null,
+          'themeSettings': {"challenge_category_order": "function compare(a, b) {\r\n  if (a \u003c b) {\r\n    return -1;\r\n  }\r\n  if (a \u003e b) {\r\n    return 1;\r\n  }\r\n  return 0;\r\n}", "challenge_order": "", "challenge_window_size": "lg", "use_builtin_code_highlighter": true},
+          'eventSounds': [
+            "/themes/core/static/sounds/notification.webm",
+            "/themes/core/static/sounds/notification.mp3",
+          ],
+      }
+  </script>
+
+  <style id="theme-color">
+:root {--theme-color: #000000;}
+.navbar{background-color: var(--theme-color) !important;}
+.jumbotron{background-color: var(--theme-color) !important;}
+</style>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a href="index.html" class="navbar-brand">
+
+        Howest CTF
+
+    </a>
+
+    <button
+        class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#base-navbars"
+        aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="base-navbars">
+      <ul class="navbar-nav me-auto">
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="users.html">
+              Users
+            </a>
+          </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="teams.html">
+                Teams
+              </a>
+            </li>
+
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="scoreboard.html">
+              Scoreboard
+            </a>
+          </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="challenges.html">
+            Challenges
+          </a>
+        </li>
+      </ul>
+
+      <hr class="d-sm-flex d-md-flex d-lg-none">
+
+      <ul class="navbar-nav ms-md-auto d-block d-sm-flex d-md-flex">
+
+
+
+
+
+
+
+
+
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language d-none d-md-inline"></i>
+            <span class="d-sm-inline d-md-none">
+              <i class="fas fa-language pe-1"></i>
+              Change language
+            </span>
+          </button>
+          <form x-data="LanguageForm">
+            <ul class="dropdown-menu dropdown-menu-end">
+
+              <li>
+                  <span class="dropdown-item " @click="set" value="en">
+                    English
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="de">
+                    Deutsch
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pl">
+                    Polski
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="es">
+                    Español
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ar">
+                    اَلْعَرَبِيَّةُ
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_CN">
+                    简体中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="zh_TW">
+                    繁體中文
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fr">
+                    Français
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ko">
+                    한국어
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ru">
+                    русский язык
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="pt_BR">
+                    Português do Brasil
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sk">
+                    Slovenský jazyk
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ja">
+                    日本語
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="it">
+                    Italiano
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="vi">
+                    tiếng Việt
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ca">
+                    Català
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="el">
+                    Ελληνικά
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="fi">
+                    Suomi
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="ro">
+                    Română
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sl">
+                    Slovenščina
+                  </span>
+              </li>
+              <li>
+                  <span class="dropdown-item " @click="set" value="sv">
+                    Svenska
+                  </span>
+              </li>
+            </ul>
+          </form>
+        </li>
+
+        <li class="nav-item">
+          <button class="nav-link theme-switch" type="button">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Toggle theme">
+              <i class="fas fa-sun d-none d-md-inline"></i>
+            </span>
+            <span class="d-sm-inline d-md-none">
+              <i class="fas fa-sun pe-1"></i>
+              Toggle theme
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main role="main">
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1>
+        Scoreboard
+      </h1>
+    </div>
+  </div>
+  <div class="container">
+    <div>
+
+
+
+</div>
+
+<meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <style>
+        body {
+            background: #1e1e1e;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0rem;
+        }
+
+        #chart {
+            width: 100%;
+            height: 600px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart"></div>
+
+    <script>
+        const chartDom = document.getElementById('chart');
+        const myChart = echarts.init(chartDom, null, { renderer: 'canvas' });
+
+        const timeLabels = [
+            '2024-05-19 08:00',
+            '2024-05-20 12:00',
+            '2024-05-21 12:00',
+            '2024-05-22 12:00',
+            '2024-05-23 12:00'
+        ];
+
+        const teams = [
+            { name: "Linganguliguliguli CTF 9", data: [0, 7250, 11050, 20150, 29650] },
+            { name: "CTF-6", data: [0, 13000, 15200, 22600, 29950] },
+            { name: "CTF-25", data: [0, 6000, 5150, 6850, 29650] },
+            { name: "CTF 31", data: [0, 6500, 12500, 19000, 29650] },
+            { name: "CTF 1 cybersec", data: [0, 5500, 11000, 18000, 29650] },
+            { name: "w8 ze zien je nie gerre hoe dak je gerre zien w8 CTF8", data: [0, 5000, 10000, 15000, 29150] },
+            { name: "CTF12 Zakhoofden", data: [0, 4000, 9000, 14000, 28850] },
+            { name: "CTF_one8y", data: [0, 3000, 8000, 13000, 28050] },
+            { name: "CTF 34 - HACKTUAH", data: [0, 2000, 7000, 12000, 27980] },
+            { name: "CTF-19-Burger", data: [0, 1000, 6000, 11000, 27950] }
+        ];
+
+        const option = {
+            backgroundColor: '#1e1e1e',
+            title: {
+                text: 'Top 10 Teams - Score Evolution',
+                left: 'center',
+                top: 10,
+                textStyle: { color: '#ccc' }
+            },
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                bottom: 0,
+                textStyle: { color: '#ccc' },
+                type: 'scroll'
+            },
+            xAxis: {
+                type: 'category',
+                boundaryGap: false,
+                data: timeLabels,
+                axisLine: { lineStyle: { color: '#ccc' } }
+            },
+            yAxis: {
+                type: 'value',
+                axisLine: { lineStyle: { color: '#ccc' } },
+                splitLine: { lineStyle: { color: '#333' } }
+            },
+            series: teams.map(team => ({
+                name: team.name,
+                type: 'line',
+                data: team.data,
+                smooth: true,
+                symbol: 'circle',
+                symbolSize: 6,
+                lineStyle: { width: 2 }
+            }))
+        };
+
+        myChart.setOption(option);
+    </script>
+</body>
+
+    <div id="scoreboard" class="row" x-data="ScoreboardList">
+      <template x-if="brackets.length &amp;&amp; standings.length"></template>
+
+      <div class="col-md-12" x-show="standings.length">
+        <table class="table table-striped align-middle">
+          <thead>
+          <tr>
+            <th style="width: 10px">Place</th>
+            <th class="text-start ps-3">Team</th>
+            <th>Score</th>
+          </tr>
+          </thead>
+
+          <tbody>
+            <template x-for="(standing, index) in standings.filter(i => activeBracket ? i.bracket_id == activeBracket : true)" :key="index"></template><tr>
+                <th scope="row" class="text-center" x-text="index + 1">1</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="teams/10.html">CTF12 zakhoofden</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">2</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="teams/11.html">CTF-25</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">3</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="#">CTF5-a2F3YW4gZW4gRWxpc2U=</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">4</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="teams/8.html">Linganguliguliguli CTF 9</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">5</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="#">w8 ze zien je nie herre hoe dak je herre zien w8 CTF8</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">6</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="teams/15.html">CTF-6</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">7</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="teams/9.html">CTF-19-Burger</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">8</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="#">Los Hermanos Atrapa La Bandera (32)</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr><tr>
+                <th scope="row" class="text-center" x-text="index + 1">9</th>
+                <td class="text-start">
+                  <a :href="standing.account_url" x-text="standing.name" href="#">CTF 007</a>
+                  <template x-if="standing.bracket_name"></template>
+                </td>
+                <td x-text="standing.score">7151</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="container text-center">
+    <a href="https://ctfd.io/" class="text-secondary">
+      <small class="text-muted">
+        Powered by CTFd
+      </small>
+    </a>
+  </div>
+</footer>
+
+<div x-data="">
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div x-ref="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto" x-text="$store.toast.title"></strong>
+        <small>just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body" x-html="$store.toast.html"></div>
+    </div>
+  </div>
+</div>
+
+
+<div x-data="">
+  <div class="modal fade" x-ref="modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" x-text="$store.modal.title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p x-html="$store.modal.html"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Got it!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script type="module" src="./Howest CTF 2025sc_files/index.8a9f494f.js.download"></script><script type="module" src="./Howest CTF 2025sc_files/index.1cf73b05.js.download"></script><script type="module" src="./Howest CTF 2025sc_files/echarts.128204f2.js.download"></script><script type="module" src="./Howest CTF 2025sc_files/scoreboard.899daf28.js.download"></script>
+
+
+
+
+
+
+</body>
+</html>
