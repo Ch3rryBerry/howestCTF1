@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
-<head>
+<!-- saved from url=(0078)file:///C:/Users/maddo/Downloads/ctf.cyber3lab.be%20(copy%201)/challenges.html -->
+<html data-bs-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Howest CTF</title>
-  <meta charset="utf-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="files/0ebef37b1c629fee90760881d4533b2b/finish.png" type="image/x-icon">
 
@@ -52,10 +52,7 @@
       
     </a>
 
-    <button
-        class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#base-navbars"
-        aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#base-navbars" aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -223,7 +220,7 @@
         <li class="nav-item">
           <button class="nav-link theme-switch" type="button">
             <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="Toggle theme">
-              <i class="fas fa-sun d-none d-md-inline"></i>
+              <i class="fas d-none d-md-inline fa-moon"></i>
             </span>
             <span class="d-sm-inline d-md-none">
               <i class="fas fa-sun pe-1"></i>
@@ -257,914 +254,744 @@
       </div>
     </div>
 
-        <div x-data=ChallengeBoard @load-challenges.window=loadChallenges()
-             @load-challenge.window=loadChallenge($event.detail)>
-            <div x-ref=challengeWindow id=challenge-window class="modal fade sf-hidden" tabindex=-1 role=dialog x-data
-                 x-html=$store.challenge.data.view></div>
-            <div x-show=!loaded style=display:none>
+        <div x-data="ChallengeBoard" @load-challenges.window="loadChallenges()" @load-challenge.window="loadChallenge($event.detail)">
+            <div x-ref="challengeWindow" id="challenge-window" class="modal fade sf-hidden" tabindex="-1" role="dialog" x-data="" x-html="$store.challenge.data.view"></div>
+            <div x-show="!loaded" style="display:none">
 
             </div>
-            <div x-show=loaded>
-                <template x-for="(category, idx) in getCategories()" :key=idx>
-                    <div class="pt-5">
-                        <div class="category-header mb-3">
-                            <h3 x-text="category"></h3>
-                        </div>
-
-                        <div class="category-challenges d-flex flex-column">
-                            <div class="challenges-row row">
-                                <template x-for="(c, idx) in getChallenges(category)" :key="c.id">
-                                    <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                        <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                            <div class="challenge-inner my-3">
-                                                <p x-text="c.name"></p>
-                                                <span x-text="c.value"></span>
-                                            </div>
-                                        </button>
-                                    </div>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-                </template>
-                <div class=pt-5>
+            <div x-show="loaded">
+                <template x-for="(category, idx) in getCategories()" :key="idx"></template>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>00 - Introduction</h3>
+                        <h3 x-text="category">00 - Introduction</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=1>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="1">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Introduction</p>
-                                        <span x-text=c.value>1</span>
+                                        <p x-text="c.name">Introduction</p>
+                                        <span x-text="c.value">1</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>01 - Crypto</h3>
+                        <h3 x-text="category">01 - Crypto</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=24>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="24">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>#### This!</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">#### This!</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=28>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="28">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>The numbers Mason, what do they mean?</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">The numbers Mason, what do they mean?</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=29>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="29">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Zero one zero one zero one</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Zero one zero one zero one</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=35>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="35">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>I Have No Mouth, and I Must Scream</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">I Have No Mouth, and I Must Scream</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=26>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="26">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Beta Geminorum</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Beta Geminorum</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>02-Stego</h3>
+                        <h3 x-text="category">02-Stego</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=30>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="30">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Who formatted this??</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Who formatted this??</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>03 - Reversing</h3>
+                        <h3 x-text="category">03 - Reversing</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=45>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="45">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>In plain sight</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">In plain sight</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=46>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="46">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Not what it seems</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Not what it seems</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=62>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="62">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>What if fantasy becomes reality</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">What if fantasy becomes reality</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=43>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="43">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Brutus</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Brutus</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=44>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="44">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Calculate_me_fast</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Calculate_me_fast</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=71>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="71">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Hex carving</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Hex carving</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=74>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="74">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Fantasy 2</p>
-                                        <span x-text=c.value>250</span>
+                                        <p x-text="c.name">Fantasy 2</p>
+                                        <span x-text="c.value">250</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=70>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="70">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Change the Jump</p>
-                                        <span x-text=c.value>300</span>
+                                        <p x-text="c.name">Change the Jump</p>
+                                        <span x-text="c.value">300</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>04 - Forensics</h3>
+                        <h3 x-text="category">04 - Forensics</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=40>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="40">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Hidden Masterpiece</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Hidden Masterpiece</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>05 - Trivia</h3>
+                        <h3 x-text="category">05 - Trivia</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=53>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="53">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Network Navigator</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Network Navigator</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=56>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="56">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Silly Shortcut</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Silly Shortcut</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=57>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="57">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Belgian Brilliance</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Belgian Brilliance</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=58>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="58">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Worm War</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Worm War</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=59>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="59">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Sneaky Stick</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Sneaky Stick</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=60>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="60">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Trust Tactic</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Trust Tactic</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=61>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="61">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Secure Signature</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Secure Signature</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=50>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="50">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Say my name</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Say my name</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=51>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="51">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>I did it for me</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">I did it for me</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=52>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="52">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Gox Genesis</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Gox Genesis</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>06 - Misc</h3>
+                        <h3 x-text="category">06 - Misc</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=20>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="20">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Tactile Treasure</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Tactile Treasure</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=23>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="23">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>L8R Sk8R</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">L8R Sk8R</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=76>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="76">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>another esoteric mess</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">another esoteric mess</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=27>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="27">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Labyrinth Lunacy</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Labyrinth Lunacy</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=39>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="39">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Ragex</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Ragex</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=54>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="54">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Known unknowns</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Known unknowns</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=66>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="66">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Epic Number Guesser: 2</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Epic Number Guesser: 2</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=21>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="21">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Barely JSON</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Barely JSON</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=22>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="22">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Nook’s Nonsense</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Nook’s Nonsense</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=36>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="36">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Nails On A Chalkboard</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Nails On A Chalkboard</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=38>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="38">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Moon Message</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Moon Message</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=55>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="55">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Legal Legend</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Legal Legend</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=63>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="63">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Unknown unknowns</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Unknown unknowns</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=64>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="64">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Abstract Art</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Abstract Art</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=65>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="65">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Epic Number Guesser: 1</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Epic Number Guesser: 1</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=68>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="68">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Epic Number Guesser: 4</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Epic Number Guesser: 4</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=69>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="69">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Epic Number Guesser: 5</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Epic Number Guesser: 5</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=78>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="78">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Boy Rom</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Boy Rom</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>07 - Programming</h3>
+                        <h3 x-text="category">07 - Programming</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=41>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="41">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Assemble the legions</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Assemble the legions</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=42>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="42">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>cpp of is it js, maybe ps?</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">cpp of is it js, maybe ps?</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>08 - Testing new format</h3>
+                        <h3 x-text="category">08 - Testing new format</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=72>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="72">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Curious cat</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Curious cat</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=77>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="77">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Neo Kitty</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Neo Kitty</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=73>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="73">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Smart kitty</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Smart kitty</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>09 - Media &amp; Marketing</h3>
+                        <h3 x-text="category">09 - Media &amp; Marketing</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=75>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="75">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Marketing madness</p>
-                                        <span x-text=c.value>300</span>
+                                        <p x-text="c.name">Marketing madness</p>
+                                        <span x-text="c.value">300</span>
                                     </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class=pt-5>
+                <div class="pt-5">
                     <div class="category-header mb-3">
-                        <h3 x-text=category>10 - Web (stress testing docker for project week 2)</h3>
+                        <h3 x-text="category">10 - Web (stress testing docker for project week 2)</h3>
                     </div>
                     <div class="category-challenges d-flex flex-column">
                         <div class="challenges-row row">
-                            <template x-for="(c, idx) in getChallenges(category)" :key=c.id>
-                                <div class="col-sm-6 col-md-4 col-lg-3 my-3">
-                                    <button class="challenge-button btn btn-dark w-100 h-100" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value="c.id" @click="loadChallenge(c.id)">
-
-                                        <div class="challenge-inner my-3">
-                                            <p x-text="c.name"></p>
-                                            <span x-text="c.value"></span>
-                                        </div>
-                                    </button>
-                                </div>
-                            </template>
+                            <template x-for="(c, idx) in getChallenges(category)" :key="c.id"></template>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=79>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="79">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Easy Web 1</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Easy Web 1</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=80>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="80">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Easy Web 2</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Easy Web 2</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=81>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="81">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Easy Web 3</p>
-                                        <span x-text=c.value>50</span>
+                                        <p x-text="c.name">Easy Web 3</p>
+                                        <span x-text="c.value">50</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=82>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="82">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Easy Web 4</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Easy Web 4</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=83>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="83">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Easy Web 5</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Easy Web 5</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=84>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="84">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Easy Web 6</p>
-                                        <span x-text=c.value>100</span>
+                                        <p x-text="c.name">Easy Web 6</p>
+                                        <span x-text="c.value">100</span>
                                     </div>
                                 </button>
                             </div>
                             <div class="col-sm-6 col-md-4 col-lg-3 my-3">
                                 <button class="challenge-button btn btn-dark w-100 h-100 challenge-solved" :class="[
-                          c.solved_by_me ? 'challenge-solved' : '',
-                          ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
-                        ];" :value=c.id @click=loadChallenge(c.id) value=85>
+                          c.solved_by_me ? &#39;challenge-solved&#39; : &#39;&#39;,
+                          ...c.tags.map((tag) =&gt; `tag-${tag.value.replace(/ /g, &#39;-&#39;)}`),
+                        ];" :value="c.id" @click="loadChallenge(c.id)" value="85">
                                     <div class="challenge-inner my-3">
-                                        <p x-text=c.name>Easy Web 7</p>
-                                        <span x-text=c.value>200</span>
+                                        <p x-text="c.name">Easy Web 7</p>
+                                        <span x-text="c.value">200</span>
                                     </div>
                                 </button>
                             </div>
@@ -1178,7 +1005,7 @@
 
 <footer class="footer">
   <div class="container text-center">
-    <a href="https://ctfd.io" class="text-secondary">
+    <a href="https://ctfd.io/" class="text-secondary">
       <small class="text-muted">
         Powered by CTFd
       </small>
@@ -1186,7 +1013,7 @@
   </div>
 </footer>
 
-<div x-data>
+<div x-data="">
   <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div x-ref="toast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
@@ -1201,7 +1028,7 @@
 </div>
 
 
-<div x-data>
+<div x-data="">
   <div class="modal fade" x-ref="modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -1221,11 +1048,11 @@
 </div>
 
 
-  <script type="module"  src="themes/core-beta/static/assets/index.8a9f494f.js"></script><script type="module"  src="themes/core-beta/static/assets/page.811c80a2.js"></script>
+  <script type="module" src="./Howest CTF_files/index.8a9f494f.js"></script><script type="module" src="./Howest CTF_files/page.811c80a2.js"></script>
 
 
 
 
 
-</body>
-</html>
+
+</body></html>
